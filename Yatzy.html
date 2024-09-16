@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yahtzee Scoreboard</title>
+   
+</head>
+<body>
+
+    <div id="diceBox"></div>
+        <img src="dice1.png" id="did31" width="50" length="50">
+        <img src="dice2.png" id="dice2" width="50" length="50">
+        <img src="dice3.png" id="dice3" width="50" length="50">
+        <img src="dice4.png" id="dice4" width="50" length="50">
+        <img src="dice5.png" id="dice5" width="50" length="50">
+        <br>
+        <button onclick="rollDice()">Roll</button width= "200" length = "200">
+    </div>
+
+    <div>
+    <table>
+        <thead>
+            <tr>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1-s</td>
+                <td><input type="number" id="aces" oninput="updateTotal()"></td>
+            </tr>
+            <tr>
+                <td>2-s</td>
+                <td><input type="number" id="twos" oninput="updateTotal()"></td>
+            </tr>
+            <tr>
+                <td>3-s</td>
+                <td><input type="number" id="threes" oninput="updateTotal()"></td>
+            </tr>
+            <tr>
+                <td>4-s</td>
+                <td><input type="number" id="fours" oninput="updateTotal()"></td>
+            </tr>
+            <tr>
+                <td>5-s</td>
+                <td><input type="number" id="fives" oninput="updateTotal()"></td>
+            </tr>
+            <tr>
+                <td>6-s</td>
+                <td><input type="number" id="sixes" oninput="updateTotal()"></td>
+            </tr>
+            <tr class="total-row">
+                <td>Total Upper Section</td>
+                <td id="upperTotal">0</td>
+            </tr>
+            <tr>
+                <td>Three of a Kind</td>
+                <td><input type="number" id="threeOfAKind" oninput="updateTotal()"></td>
+            </tr>
+            <tr>
+                <td>Four of a Kind</td>
+                <td><input type="number" id="fourOfAKind" oninput="updateTotal()"></td>
+            </tr>
+            <tr>
+                <td>Full House</td>
+                <td><input type="number" id="fullHouse" oninput="updateTotal()"></td>
+            </tr>
+            <tr>
+                <td>Small Straight</td>
+                <td><input type="number" id="smallStraight" oninput="updateTotal()"></td>
+            </tr>
+            <tr>
+                <td>Large Straight</td>
+                <td><input type="number" id="largeStraight" oninput="updateTotal()"></td>
+            </tr>
+            <tr>
+                <td>Yahtzee</td>
+                <td><input type="number" id="yahtzee" oninput="updateTotal()"></td>
+            </tr>
+            <tr>
+                <td>Chance</td>
+                <td><input type="number" id="chance" oninput="updateTotal()"></td>
+            </tr>
+            <tr class="total-row">
+                <td>Total Lower Section</td>
+                <td id="lowerTotal">0</td>
+            </tr>
+            <tr class="total">
+                <td>Total Score</td>
+                <td id="totalScore">0</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>
