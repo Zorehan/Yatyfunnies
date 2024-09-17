@@ -1,5 +1,5 @@
 
-let 
+
 
 
 //Ruller terningen  
@@ -32,7 +32,9 @@ let totalSum = sumDiceResults(diceRoll);
 
 //---------------------------------------------------------------------------------
 //Select hvilken boks slaget skal gemmes i:
-
+function selectDice(){
+    
+}
 
 //X-er
 function numberOfCategory(dice, number) {
