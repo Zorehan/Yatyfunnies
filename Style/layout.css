@@ -22,9 +22,17 @@ div {
     text-align: right;
 }
 
+/* Dice box div */
+#diceBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
 #diceBox img {
-    width: 70px; /* You can adjust the width */
-    height: 70px; /* You can adjust the height */
+    width: 50px; /* You can adjust the width */
+    height: 50px; /* You can adjust the height */
     object-fit: cover; /* Ensures the image covers the container without distortion */
 }
 
