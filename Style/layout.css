@@ -1,50 +1,55 @@
 
 
-html,
-body { 
-    background-image: linear-gradient(rgba(255, 255, 200), rgb(255, 200, 200));
-    font-family: "Comic Sans MS", "Comic Sans", sans-serif;
-    height: 100%;
-    
+html { 
+  background-image: linear-gradient(rgba(255, 255, 200), rgb(255, 200, 200));
+  font-family: "Comic Sans MS", "Comic Sans", sans-serif;
+  min-height: 100%;
+  max-height: none;
+  font-size: 56px;
 }
 
 div {
-    /*display: grid; */
-    /* grid-template-columns: 1fr 0.5fr; /* or 2fr 1fr */
-    margin: auto;
-    margin-bottom: 2mm;
-    width: 90%;
-    min-width: 12cm;
-    border: 2px solid rgba(172, 255, 47, 0.268);
-    padding: 1%;
+  border: 2px solid rgb(220, 233, 146);
+  
+}
+
+#diceBox {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-bottom: 1%;
+  max-width: 70vw;
+  min-width: 900px;
+  padding: 1%;
 }
 
 
 
 /* Dice box div */
-#diceBox {
+#diceImages {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  flex-wrap: wrap;
+  
+  /* scale */
+  max-width: 100%;
+  min-width: 0%;
+
   gap: 1%;
   
 }
-#diceBox img {
-  width: 19%; /* You can adjust the width */
-  height: 1fr; /* You can adjust the height */
-  object-fit: cover; /* Ensures the image covers the container without distortion */
-}
 
+#diceImages img {
+  object-fit: cover; /* Ensures the image covers the container without distortion */
+  flex: 1 1 auto;
+  max-width: 100%;
+  min-width: 0%;
+}
 
 
 
 /* CRAZY BUTTON */
 /* Button base layout */
 #diceBox button {
-  
-
+  align-self: end;
   
   font-family: "Comic Sans MS", "Comic Sans", sans-serif; /* Button text font */
   background-color: rgb(255, 175, 100); /* Button Shadow color */
@@ -52,15 +57,15 @@ div {
   border-radius: 16px;
   border-width: 0 0 4px;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size:calc(1vh + 1vw);
   font-weight: 700;
   letter-spacing: .8px;
   line-height: 20px;
 
-  margin: auto;
+  margin: 1%;
   outline: none;
   overflow: visible;
-  padding: 13px;
+  padding: 2%;
   text-align: center;
   text-transform: uppercase;
   touch-action: manipulation;
@@ -71,11 +76,9 @@ div {
   vertical-align: middle;
   white-space: nowrap;
 
-  width: 15%; /* You can adjust the width */
-  height: 10%;
-  margin-left: 80%; /* placement*/
+ 
+  
 }
-
 
 #diceBox button:after {
 background-clip: padding-box;
@@ -83,7 +86,7 @@ background-color:  rgb(255, 200, 165);
 border: solid transparent;
 border-radius: 16px;
 border-width: 0 0 4px;
-bottom: -4px;
+bottom: 2%;
 content: "";
 left: 0;
 position: absolute;
@@ -91,7 +94,6 @@ right: 0;
 top: 0;
 z-index: -1;
 }
-/**/
 
 #diceBox button,
 #diceBox button:focus {
@@ -111,19 +113,42 @@ cursor: auto;
 border-width: 4px 0 0;
 background: none;
 }
+
 /* ------------------------------------------------------------- */
 /* Score bord */
-table {
+#scoreBox {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-bottom: 1%;
+  max-width: 70vw;
+  min-width: 900px;
+  padding: 1%;
+}
+
+#scoreBox table {
   margin-left: auto;
   margin-right: auto;
   align-self: center;
+  max-width: 100%;
+  min-width: 0%;
 }
 
-td {
-  font-size: 100%;
+#scoreBox th {
+  font-size: 2rem;
+}
+
+#scoreBox td {
+  font-size: 1rem;
+  
 }
 
 /* sets all  */
-.totalRow{
+.totalCounters{
   text-align: right;
+  text-decoration: underline;
+}
+
+input {
+  max-width: 70%;
 }

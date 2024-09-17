@@ -9,15 +9,17 @@
 </head>
 <body>
     <div id="diceBox">
-        <img src="Images/dice-one.png" id="dice1" onclick="selectDice()">
-        <img src="Images/dice-one.png" id="dice2" onclick="selectDice()">
-        <img src="Images/dice-one.png" id="dice3" onclick="selectDice()">
-        <img src="Images/dice-one.png" id="dice4" onclick="selectDice()">
-        <img src="Images/dice-one.png" id="dice5" onclick="selectDice()">
-        
+        <div id="diceImages">
+            <img src="Images/dice-one.png" id="dice1" onclick="selectDice()">
+            <img src="Images/dice-one.png" id="dice2" onclick="selectDice()">
+            <img src="Images/dice-one.png" id="dice3" onclick="selectDice()">
+            <img src="Images/dice-one.png" id="dice4" onclick="selectDice()">
+            <img src="Images/dice-one.png" id="dice5" onclick="selectDice()">
+        </div>
+        <br>
         <button onclick="rollDice()">Roll</button>
     </div>
-    <div>
+    <div id="scoreBox">
         <table>
             <thead>
                 <tr>

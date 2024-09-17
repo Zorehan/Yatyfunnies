@@ -7,8 +7,8 @@ function rollDie() {
     return Math.floor(Math.random() * 6) + 1;
 }
 
-//Ruller 6 terninger 
-function rollDice(numOfDice = 6) {
+//Ruller 5 terninger 
+function rollDice(numOfDice = 5) {
     let diceResults = [];
     for (let i = 0; i < numOfDice; i++) {
         //TO DO -----------
