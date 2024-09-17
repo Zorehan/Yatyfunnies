@@ -1,9 +1,10 @@
 
 
-
+html,
 body { 
     background-image: linear-gradient(rgba(255, 255, 200), rgb(255, 200, 200));
     font-family: "Comic Sans MS", "Comic Sans", sans-serif;
+    height: 100%;
     
 }
 
@@ -12,46 +13,54 @@ div {
     /* grid-template-columns: 1fr 0.5fr; /* or 2fr 1fr */
     margin: auto;
     margin-bottom: 2mm;
-    width: 50%;
+    width: 90%;
+    min-width: 12cm;
     border: 2px solid rgba(172, 255, 47, 0.268);
-    padding: 10px;
+    padding: 1%;
 }
 
-/* sets all  */
-.totalRow{
-    text-align: right;
-}
+
 
 /* Dice box div */
 #diceBox {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  align-content: center;
   flex-wrap: wrap;
+  gap: 1%;
+  
 }
 #diceBox img {
-    width: 50px; /* You can adjust the width */
-    height: 50px; /* You can adjust the height */
-    object-fit: cover; /* Ensures the image covers the container without distortion */
+  width: 19%; /* You can adjust the width */
+  height: 1fr; /* You can adjust the height */
+  object-fit: cover; /* Ensures the image covers the container without distortion */
 }
 
+
+
+
 /* CRAZY BUTTON */
+/* Button base layout */
 #diceBox button {
-  font-family: "Comic Sans MS", "Comic Sans", sans-serif;
-  background-color: rgb(255, 175, 100);
+  
+
+  
+  font-family: "Comic Sans MS", "Comic Sans", sans-serif; /* Button text font */
+  background-color: rgb(255, 175, 100); /* Button Shadow color */
   border: solid transparent;
   border-radius: 16px;
   border-width: 0 0 4px;
   box-sizing: border-box;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: .8px;
   line-height: 20px;
-  margin: 0;
+
+  margin: auto;
   outline: none;
   overflow: visible;
-  padding: 13px 16px;
+  padding: 13px;
   text-align: center;
   text-transform: uppercase;
   touch-action: manipulation;
@@ -61,7 +70,10 @@ div {
   -webkit-user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  /*width: 100%; */
+
+  width: 15%; /* You can adjust the width */
+  height: 10%;
+  margin-left: 80%; /* placement*/
 }
 
 
@@ -99,4 +111,19 @@ cursor: auto;
 border-width: 4px 0 0;
 background: none;
 }
+/* ------------------------------------------------------------- */
+/* Score bord */
+table {
+  margin-left: auto;
+  margin-right: auto;
+  align-self: center;
+}
 
+td {
+  font-size: 100%;
+}
+
+/* sets all  */
+.totalRow{
+  text-align: right;
+}
