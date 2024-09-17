@@ -25,8 +25,6 @@ function sumDiceResults(diceResults) {
 
 //Udregner totalsummen af alle slag 
 let totalSum = sumDiceResults(diceRoll); 
-console.log("Sum of dice rolls:", totalSum);
-
 
 
 //eventhandler der skal rulle terningerne 
@@ -36,32 +34,91 @@ console.log("Sum of dice rolls:", totalSum);
 //Select hvilken boks slaget skal gemmes i:
 
 
-//1-er
-
-//2-er
-
-//3-er
-
-//4-er
-
-//5-er
-
-//6-er
+//X-er
+function numberOfCategory(dice, number) {
+    return dice.filter(die => die === number).reduce((sum, die) => sum + die, 0);
+}
 
 //Et par
+function onePair(dice) {
+    const counts = countDice(dice);
+    for (let i = 6; i > 0; i--) {
+        if (counts[i] >= 2) {
+            return i * 2;
+        }
+    }
+    return 0;
+}
 
 //To par
+function twoPairs(dice) {
+    const counts = countDice(dice);
+    let pairs = [];
+    for (let i = 6; i > 0; i--) {
+        if (counts[i] >= 2) {
+            pairs.push(i);
+            if (pairs.length === 2) {
+                return pairs[0] * 2 + pairs[1] * 2;
+            }
+        }
+    }
+    return 0;
+}
 
 //tre par
+function threeOfAKind(dice) {
+    const counts = countDice(dice);
+    for (let i = 6; i > 0; i--) {
+        if (counts[i] >= 3) {
+            return i * 3;
+        }
+    }
+    return 0;
+}
 
 //fire par
+function fourOfAKind(dice) {
+    const counts = countDice(dice);
+    for (let i = 6; i > 0; i--) {
+        if (counts[i] >= 4) {
+            return i * 4;
+        }
+    }
+    return 0;
+}
 
 //fuldt hus
+function fullHouse(dice) {
+    const counts = countDice(dice);
+    let three = 0, two = 0;
+    for (let i = 6; i > 0; i--) {
+        if (counts[i] === 3) {
+            three = i;
+        } else if (counts[i] === 2) {
+            two = i;
+        }
+    }
+    return (three && two) ? three * 3 + two * 2 : 0;
+}
 
 //lille straight
+function smallStraight(dice) {
+    const sorted = [...new Set(dice)].sort();
+    return JSON.stringify(sorted) === JSON.stringify([1, 2, 3, 4, 5]) ? 15 : 0;
+}
 
 //stor straight
+function largeStraight(dice) {
+    const sorted = [...new Set(dice)].sort();
+    return JSON.stringify(sorted) === JSON.stringify([2, 3, 4, 5, 6]) ? 20 : 0;
+}
 
 //chance
+function chance(dice) {
+    return sumDiceResults(dice);
+}
 
 //yatzy 
+function yatzy(dice) {
+    return dice.every(die => die === dice[0]) ? 50 : 0;
+}
