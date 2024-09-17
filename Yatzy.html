@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yahtzee Scoreboard</title>
-   
+    <link rel="stylesheet" href="Style/layout.css">
+    
 </head>
 <body>
-
-    <div id="diceBox"></div>
-    <img src="dice1.png" id="dice1" width="50" height="50" onclick="selectDice()">
-    <img src="dice1.png" id="dice2" width="50" height="50" onclick="selectDice()">
-    <img src="dice1.png" id="dice3" width="50" height="50" onclick="selectDice()">
-    <img src="dice1.png" id="dice4" width="50" height="50" onclick="selectDice()">
-    <img src="dice1.png" id="dice5" width="50" height="50" onclick="selectDice()">
+    <div id="diceBox">
+    <img src="dice1.png" id="dice1" onclick="selectDice()">
+    <img src="dice1.png" id="dice2" onclick="selectDice()">
+    <img src="dice1.png" id="dice3" onclick="selectDice()">
+    <img src="dice1.png" id="dice4" onclick="selectDice()">
+    <img src="dice1.png" id="dice5" onclick="selectDice()">
+    
     <br>
     <button onclick="rollDice()">Roll</button>
+</div>
     <div>
         <table>
             <thead>
