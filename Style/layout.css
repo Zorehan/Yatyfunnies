@@ -17,28 +17,25 @@ div {
     padding: 10px;
 }
 
-#diceBox button {
-    font-family: "Comic Sans MS", "Comic Sans", sans-serif;
-    background-color: rgb(255, 225, 200);
-    border: solid transparent;
-    border-radius: 16px;
-    border-width: 0 0 4px;
-    box-sizing: border-box;
-    padding: 13px 16px;
+/* sets all  */
+.totalRow{
+    text-align: right;
 }
 
-/* CSS */
-.button-19 {
-  appearance: button;
-  background-color: #1899D6;
+#diceBox img {
+    width: 70px; /* You can adjust the width */
+    height: 70px; /* You can adjust the height */
+    object-fit: cover; /* Ensures the image covers the container without distortion */
+}
+
+/* CRAZY BUTTON */
+#diceBox button {
+  font-family: "Comic Sans MS", "Comic Sans", sans-serif;
+  background-color: rgb(255, 175, 100);
   border: solid transparent;
   border-radius: 16px;
   border-width: 0 0 4px;
   box-sizing: border-box;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: inline-block;
-  font-family: din-round,sans-serif;
   font-size: 15px;
   font-weight: 700;
   letter-spacing: .8px;
@@ -56,49 +53,42 @@ div {
   -webkit-user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  width: 100%;
+  /*width: 100%; */
 }
 
-.button-19:after {
-  background-clip: padding-box;
-  background-color: #1CB0F6;
-  border: solid transparent;
-  border-radius: 16px;
-  border-width: 0 0 4px;
-  bottom: -4px;
-  content: "";
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: -1;
+
+#diceBox button:after {
+background-clip: padding-box;
+background-color:  rgb(255, 200, 165);
+border: solid transparent;
+border-radius: 16px;
+border-width: 0 0 4px;
+bottom: -4px;
+content: "";
+left: 0;
+position: absolute;
+right: 0;
+top: 0;
+z-index: -1;
+}
+/**/
+
+#diceBox button,
+#diceBox button:focus {
+user-select: auto;
 }
 
-.button-19,
-.button-19:focus {
-  user-select: auto;
+#diceBox button:hover:not(:disabled) {
+filter: brightness(1.1);
+-webkit-filter: brightness(1.1);
 }
 
-.button-19:hover:not(:disabled) {
-  filter: brightness(1.1);
-  -webkit-filter: brightness(1.1);
+#diceBox button:disabled {
+cursor: auto;
 }
 
-.button-19:disabled {
-  cursor: auto;
+#diceBox button:active {
+border-width: 4px 0 0;
+background: none;
 }
 
-.button-19:active {
-  border-width: 4px 0 0;
-  background: none;
-}
-
-.totalCounter{
-    text-align: right;
-}
-
-#diceBox img {
-    width: 70px; /* You can adjust the width */
-    height: 70px; /* You can adjust the height */
-    object-fit: cover; /* Ensures the image covers the container without distortion */
-}
