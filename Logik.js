@@ -1,5 +1,5 @@
 
-
+let 
 
 
 //Ruller terningen  
@@ -11,7 +11,7 @@ function rollDie() {
 function rollDice(numOfDice = 5) {
     let diceResults = [];
     for (let i = 0; i < numOfDice; i++) {
-        //TO DO -----------
+        //TODO ----------- (colour mood is comming for you)
         //Stop terningerne fra at rulle igen
         diceResults.push(rollDie());
     }

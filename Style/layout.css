@@ -10,7 +10,6 @@ html {
 
 div {
   border: 2px solid rgb(220, 233, 146);
-  
 }
 
 #diceBox {
@@ -34,7 +33,6 @@ div {
   min-width: 0%;
 
   gap: 1%;
-  
 }
 
 #diceImages img {
@@ -76,8 +74,6 @@ div {
   vertical-align: middle;
   white-space: nowrap;
 
- 
-  
 }
 
 #diceBox button:after {
@@ -143,12 +139,13 @@ background: none;
   
 }
 
-/* sets all  */
+/* sets all */
 .totalCounters{
-  text-align: right;
+  text-align: center;
   text-decoration: underline;
 }
 
 input {
   max-width: 70%;
 }
+
