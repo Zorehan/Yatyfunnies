@@ -1,6 +1,8 @@
+
 let diceResults = [1, 1, 1, 1, 1];
 let diceHeld = [false, false, false, false, false];
 let rollsLeft = 3;
+
 
 function rollDie() {
     return Math.floor(Math.random() * 6) + 1;
@@ -17,6 +19,7 @@ function rollDice() {
         rollsLeft--;
     }
 }
+
 
 function updateDiceImages() {
     for (let i = 0; i < diceResults.length; i++) {
@@ -71,6 +74,7 @@ function countDice(dice) {
     }
     return counts;
 }
+
 
 function rollButtonHandler() {
     rollDice();
@@ -196,3 +200,4 @@ function resetGame() {
     updateDiceImages();
     document.querySelectorAll('input[type="number"]').forEach(field => field.disabled = true);
 }
+
