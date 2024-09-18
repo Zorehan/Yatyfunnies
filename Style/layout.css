@@ -5,7 +5,6 @@ html {
   font-family: "Comic Sans MS", "Comic Sans", sans-serif;
   min-height: 100%;
   max-height: none;
-  font-size: 56px;
 }
 
 div {
@@ -119,22 +118,23 @@ background: none;
 }
 
 #scoreBox table {
+  object-fit: cover;
   margin-left: auto;
   margin-right: auto;
   align-self: center;
-  max-width: 70%;
-  min-width: 0%;
+  max-width: 70vw;
+  min-width: 200px;
   white-space: nowrap;
 }
 
 #scoreBox th {
-  font-size: min(1rem);
-  font-size: max(2rem);
+  font-size: min(56px);
+  font-size: max(112px);
 }
 
 #scoreBox td {
-  font-size: min(0.5rem);
-  font-size: max(1rem);
+  font-size: min(16px);
+  font-size: max(56px);
 
 }
 
