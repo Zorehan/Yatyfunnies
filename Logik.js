@@ -41,66 +41,29 @@ function checkValidFields() {
     if (rollsLeft === 0) {
         let counts = countDice(diceResults);
 
-        if (numberOfCategory(diceResults, 1) > 0) {
-            document.getElementById("aces").disabled = false;
-        }
-
-        if (numberOfCategory(diceResults, 2) > 0) {
-            document.getElementById("twos").disabled = false;
-        }
-
-        if (numberOfCategory(diceResults, 3) > 0) {
-            document.getElementById("threes").disabled = false;
-        }
-
-        if (numberOfCategory(diceResults, 4) > 0) {
-            document.getElementById("fours").disabled = false;
-        }
-
-        if (numberOfCategory(diceResults, 5) > 0) {
-            document.getElementById("fives").disabled = false;
-        }
-
-        if (numberOfCategory(diceResults, 6) > 0) {
-            document.getElementById("sixes").disabled = false;
-        }
-
-        if (onePair(diceResults) > 0) {
-            document.getElementById("onePair").disabled = false;
-        }
-
-        if (twoPairs(diceResults) > 0) {
-            document.getElementById("twoPairs").disabled = false;
-        }
-
-
-        if (threeOfAKind(diceResults) > 0) {
-            document.getElementById("threeOfAKind").disabled = false;
-        }
-
-        if (fourOfAKind(diceResults) > 0) {
-            document.getElementById("fourOfAKind").disabled = false;
-        }
-
-        if (fullHouse(diceResults) > 0) {
-            document.getElementById("fullHouse").disabled = false;
-        }
-
-        if (smallStraight(diceResults) > 0) {
-            document.getElementById("smallStraight").disabled = false;
-        }
-
-        if (largeStraight(diceResults) > 0) {
-            document.getElementById("largeStraight").disabled = false;
-        }
-
-        if (yatzy(diceResults) > 0) {
-            document.getElementById("yahtzee").disabled = false;
-        }
-
-        document.getElementById("chance").disabled = false;
+        setFieldAvailability("aces", numberOfCategory(diceResults, 1) > 0);
+        setFieldAvailability("twos", numberOfCategory(diceResults, 2) > 0);
+        setFieldAvailability("threes", numberOfCategory(diceResults, 3) > 0);
+        setFieldAvailability("fours", numberOfCategory(diceResults, 4) > 0);
+        setFieldAvailability("fives", numberOfCategory(diceResults, 5) > 0);
+        setFieldAvailability("sixes", numberOfCategory(diceResults, 6) > 0);
+        setFieldAvailability("onePair", onePair(diceResults) > 0);
+        setFieldAvailability("twoPairs", twoPairs(diceResults) > 0);
+        setFieldAvailability("threeOfAKind", threeOfAKind(diceResults) > 0);
+        setFieldAvailability("fourOfAKind", fourOfAKind(diceResults) > 0);
+        setFieldAvailability("fullHouse", fullHouse(diceResults) > 0);
+        setFieldAvailability("smallStraight", smallStraight(diceResults) > 0);
+        setFieldAvailability("largeStraight", largeStraight(diceResults) > 0);
+        setFieldAvailability("yahtzee", yatzy(diceResults) > 0);
+        setFieldAvailability("chance", true);
     }
 }
+
+function setFieldAvailability(id, available) {
+    let field = document.getElementById(id);
+    field.disabled = !available; 
+}
+
 function countDice(dice) {
     let counts = {};
     for (let die of dice) {
@@ -113,6 +76,7 @@ function rollButtonHandler() {
     rollDice();
     checkValidFields();
 }
+
 function numberOfCategory(dice, number) {
     return dice.filter(die => die === number).reduce((sum, die) => sum + die, 0);
 }
@@ -190,4 +154,45 @@ function chance(dice) {
 
 function yatzy(dice) {
     return dice.every(die => die === dice[0]) ? 50 : 0;
+}
+
+document.querySelectorAll('input[type="number"]').forEach(field => {
+    field.addEventListener('click', function() {
+        if (rollsLeft === 0 && !this.disabled) {
+            let score = 0;
+            const id = this.id;
+
+        
+            switch (id) {
+                case 'aces': score = numberOfCategory(diceResults, 1); break;
+                case 'twos': score = numberOfCategory(diceResults, 2); break;
+                case 'threes': score = numberOfCategory(diceResults, 3); break;
+                case 'fours': score = numberOfCategory(diceResults, 4); break;
+                case 'fives': score = numberOfCategory(diceResults, 5); break;
+                case 'sixes': score = numberOfCategory(diceResults, 6); break;
+                case 'onePair': score = onePair(diceResults); break;
+                case 'twoPairs': score = twoPairs(diceResults); break;
+                case 'threeOfAKind': score = threeOfAKind(diceResults); break;
+                case 'fourOfAKind': score = fourOfAKind(diceResults); break;
+                case 'fullHouse': score = fullHouse(diceResults); break;
+                case 'smallStraight': score = smallStraight(diceResults); break;
+                case 'largeStraight': score = largeStraight(diceResults); break;
+                case 'yahtzee': score = yatzy(diceResults); break;
+                case 'chance': score = chance(diceResults); break;
+            }
+
+            this.value = score;
+            this.disabled = true;
+
+            resetGame();
+        }
+    });
+});
+
+function resetGame() {
+    rollsLeft = 3;
+    diceResults = [1, 1, 1, 1, 1];
+    diceHeld = [false, false, false, false, false];
+    updateDiceImages();
+    document.querySelectorAll('input[type="number"]').forEach(field => field.disabled = true);
 }
