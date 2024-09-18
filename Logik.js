@@ -1,3 +1,6 @@
+let diceRoll = new Array(5)
+
+let checked = [false,false,false,false,false]
 
 //Ruller terningen  
 function rollDie() {
@@ -25,6 +28,75 @@ let totalSum = sumDiceResults(diceRoll);
 
 
 //eventhandler der skal rulle terningerne 
+function diceRoller(){
+    checkCheck()
+    diceUpdate()
+    diceImgUpdate()
+    console.log(checked)
+    console.log(diceRoll)
+
+
+
+}
+
+function checkCheck(){
+    let check
+    for(let i = 0; i < checked.length;i++){
+        check = document.getElementById("reroleDice" + (i + 1))
+        checked[i] = check.checked
+        
+    }
+}
+
+function diceUpdate(){
+    let dice = rollDice()
+    for(let i = 0; i < diceRoll.length; i++){
+        if(checked[i] !== true){
+            diceRoll[i] = dice[i]
+        }
+    }
+
+}
+
+function diceImgUpdate(){
+    imgThrow()
+    imgRolling()
+    for(let i = 0; i < 5; i++){
+        if(checked[i]!== true){
+        document.getElementById('dice' + (i + 1)).src = "diceSetsFolder/whiteDice/dice-"+ diceRoll[i] +".png"
+        }
+    }
+
+}
+
+function imgThrow(){
+    for(let i = 0; i < 5; i++){
+        if(checked[i] !== true){
+        document.getElementById('dice' + (i + 1)).src = "diceThrow/dice-cup.png"
+        }
+    }
+    wait(500)
+   
+
+}
+
+function imgRolling(){
+    for(let i = 0; i < 5; i++){
+        if(checked[i] !== true){
+        document.getElementById('dice' + (i + 1)).src = "diceThrow/cubes.png"
+        }
+    }
+    setTimeout(1000)
+    wait(500)
+}
+
+let wait = (ms) => {
+    const start = Date.now();
+    let now = start;
+    while (now - start < ms) {
+      now = Date.now();
+    }
+}
 
 
 //---------------------------------------------------------------------------------

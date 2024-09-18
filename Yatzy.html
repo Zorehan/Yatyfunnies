@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yahtzee Scoreboard</title>
     <link rel="stylesheet" href="Style/layout.css">
+    <script src="Logik.js" defer></script>
     
 </head>
 <body>
@@ -25,7 +26,7 @@
             <input type="checkbox" name="checkbox5" id="reroleDice5">
         </div>
         <br>
-        <button onclick="rollDice()">Roll</button>
+        <button onclick="diceRoller()">Roll</button>
     </div>
     <div id="scoreBox">
         <table>
@@ -61,7 +62,7 @@
                 </tr>
                 <tr class="totalRow">
                     <td class="totalCounters" >Samlet point øverst:</td>
-                    <td class="totalCounters" id="upperTotal">0</td>
+                    <td class="tota lCounters" id="upperTotal">0</td>
                 </tr>
                 <tr>
                     <td>Tre ens:</td>
