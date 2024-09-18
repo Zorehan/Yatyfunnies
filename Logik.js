@@ -23,11 +23,22 @@ function rollDice() {
     }
 }
 
+function onClickBlackDiceBtn()
+{
+    diceSkin = "blackDice";
+    updateDiceImages();
+}
+
+function onClickNumberedDiceBtn()
+{
+    diceSkin = "numberedDice3d";
+    updateDiceImages();
+}
 
 function updateDiceImages() {
     for (let i = 0; i < diceResults.length; i++) {
         let diceImage = document.getElementById(`dice${i + 1}`);
-        diceImage.src = `diceSetsFolder/whiteDice/dice-${diceResults[i]}.png`;
+        diceImage.src = `diceSetsFolder/${diceSkin}/dice-${diceResults[i]}.png`;
 
         if (diceHeld[i]) {
             diceImage.classList.add('held');
