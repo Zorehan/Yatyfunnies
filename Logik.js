@@ -24,9 +24,12 @@ function sumDiceResults(diceResults) {
     return diceResults.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 }
 
-//Udregner totalsummen af alle slag 
-let totalSum = sumDiceResults(diceRoll); 
 
+//Udregner totalsummen af alle slag 
+function updateTotal(diceRoll){
+let totalSum = sumDiceResults(diceRoll); 
+    return totalSum; 
+}
 
 //eventhandler der skal rulle terningerne 
 
