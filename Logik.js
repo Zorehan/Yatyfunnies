@@ -1,3 +1,9 @@
+let counter = 0
+let dice = [1, 1, 1, 1, 1]
+let diceToggle = [true, true, true, true, true]
+
+
+
 
 //Ruller terningen  
 function rollDie() {
@@ -30,10 +36,14 @@ let totalSum = sumDiceResults(diceRoll);
 //---------------------------------------------------------------------------------
 //Select hvilken boks slaget skal gemmes i:
 function selectDice(){
-    //Sets disabled
+    //Switches toggle to (true/false)
+    var inputs = document.myform;
+    for(var i = 0; i < inputs.length; i++) {
+        inputs[i].disabled = false;
+    }
 }
 
-function updateDice(){
+function updateRoll(){
 
 }
 
@@ -125,3 +135,4 @@ function chance(dice) {
 function yatzy(dice) {
     return dice.every(die => die === dice[0]) ? 50 : 0;
 }
+
