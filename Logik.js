@@ -59,8 +59,22 @@ function diceUpdate(){
 }
 
 function diceImgUpdate(){
-    imgThrow()
-    imgRolling()
+    //imgThrow()
+    //imgRolling()
+    for(let i = 0; i < 5; i++){
+        if(checked[i] !== true){
+        document.getElementById('dice' + (i + 1)).src = "diceThrow/dice-cup.png"
+        }
+    }
+    wait(500)
+    for(let i = 0; i < 5; i++){
+        if(checked[i] !== true){
+        document.getElementById('dice' + (i + 1)).src = "diceThrow/cubes.png"
+        }
+    }
+    wait(500)
+
+
     for(let i = 0; i < 5; i++){
         if(checked[i]!== true){
         document.getElementById('dice' + (i + 1)).src = "diceSetsFolder/whiteDice/dice-"+ diceRoll[i] +".png"
@@ -86,7 +100,6 @@ function imgRolling(){
         document.getElementById('dice' + (i + 1)).src = "diceThrow/cubes.png"
         }
     }
-    setTimeout(1000)
     wait(500)
 }
 
