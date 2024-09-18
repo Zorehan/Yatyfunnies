@@ -2,7 +2,6 @@
 let diceResults = [1, 1, 1, 1, 1];
 let diceHeld = [false, false, false, false, false];
 let rollsLeft = 3;
-let diceSkin = whiteDice
 
 
 function rollDie() {
