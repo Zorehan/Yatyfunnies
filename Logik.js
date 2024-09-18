@@ -80,6 +80,31 @@ function countDice(dice) {
     return counts;
 }
 
+function updateTotals() {
+    let upperTotal = 0;
+    let lowerTotal = 0;
+
+    const upperFields = ['aces', 'twos', 'threes', 'fours', 'fives', 'sixes'];
+    upperFields.forEach(id => {
+        let field = document.getElementById(id);
+        if (field.value !== '') {
+            upperTotal += parseInt(field.value);
+        }
+    });
+
+    const lowerFields = ['onePair', 'twoPairs', 'threeOfAKind', 'fourOfAKind', 'fullHouse', 'smallStraight', 'largeStraight', 'yahtzee', 'chance'];
+    lowerFields.forEach(id => {
+        let field = document.getElementById(id);
+        if (field.value !== '') {
+            lowerTotal += parseInt(field.value);
+        }
+    });
+
+    document.getElementById('upperTotal').innerText = upperTotal;
+    document.getElementById('lowerTotal').innerText = lowerTotal;
+    document.getElementById('totalScore').innerText = upperTotal + lowerTotal;
+}
+
 
 function rollButtonHandler() {
     rollDice();
@@ -193,6 +218,7 @@ document.querySelectorAll('input[type="number"]').forEach(field => {
             this.value = score;
             this.disabled = true;
 
+            updateTotals();
             resetGame();
         }
     });
