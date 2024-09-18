@@ -3,8 +3,6 @@ let dice = [1, 1, 1, 1, 1]
 let diceToggle = [true, true, true, true, true]
 
 
-
-
 //Ruller terningen  
 function rollDie() {
     return Math.floor(Math.random() * 6) + 1;
