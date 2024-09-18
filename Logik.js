@@ -1,7 +1,4 @@
 
-
-
-
 //Ruller terningen  
 function rollDie() {
     return Math.floor(Math.random() * 6) + 1;
@@ -34,7 +31,7 @@ let totalSum = sumDiceResults(diceRoll);
 //Select hvilken boks slaget skal gemmes i:
 
 
-//X-er
+//X-antal af en ternnig 
 function numberOfCategory(dice, number) {
     return dice.filter(die => die === number).reduce((sum, die) => sum + die, 0);
 }
