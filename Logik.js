@@ -30,7 +30,11 @@ let totalSum = sumDiceResults(diceRoll);
 //---------------------------------------------------------------------------------
 //Select hvilken boks slaget skal gemmes i:
 function selectDice(){
-    
+    //Sets disabled
+}
+
+function updateDice(){
+
 }
 
 //X-antal af en ternnig 

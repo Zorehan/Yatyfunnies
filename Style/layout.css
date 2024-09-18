@@ -42,40 +42,6 @@ div {
   min-width: 0%;
 }
 
-/* CHECKBOXES */
-#rerole {
-  display: flex;
-  flex-direction: row;
-  /* scale */
-  max-width: 100%;
-  min-width: 0%;
-  max-height: 100%;
-  min-height: 0%;
-  
-  gap: 1%;
-}
-
-input[type=checkbox] {
-  object-fit: cover; /* Ensures the image covers the container without distortion */
-  flex: 1 1;
-  /* scale */
-  -ms-transform: scale(10); /* IE */
-  -moz-transform: scale(10); /* FF */
-  -webkit-transform: scale(10); /* Safari and Chrome */
-  -o-transform: scale(10); /* Opera */
-  transform: scale(10);
-  padding: 10px;
-  
-  gap: 1%;
-}
-
-.checkboxtext
-{
-  /* Checkbox text */
-  font-size: 110%;
-  display: inline;
-}
-
 /* CRAZY BUTTON */
 /* Button base layout */
 #diceBox button {
