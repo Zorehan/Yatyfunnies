@@ -2,6 +2,7 @@
 let diceResults = [1, 1, 1, 1, 1];
 let diceHeld = [false, false, false, false, false];
 let rollsLeft = 3;
+let diceSkin = whiteDice
 
 
 function rollDie() {
@@ -17,6 +18,9 @@ function rollDice() {
         }
         updateDiceImages();
         rollsLeft--;
+
+        let rollsLeftText = document.getElementById("rollsLeftText");
+        rollsLeftText.textContent = rollsLeft;
     }
 }
 
@@ -35,9 +39,11 @@ function updateDiceImages() {
 }
 
 function selectDice(index) {
+    if (rollsLeft != 3){
     index = index - 1; 
     diceHeld[index] = !diceHeld[index];  
     updateDiceImages();
+    }
 }
 
 function checkValidFields() {
@@ -199,5 +205,9 @@ function resetGame() {
     diceHeld = [false, false, false, false, false];
     updateDiceImages();
     document.querySelectorAll('input[type="number"]').forEach(field => field.disabled = true);
+    
+    /* updates "Rolls left: x" text field */
+    let rollsLeftText = document.getElementById("rollsLeftText");
+    rollsLeftText.textContent = rollsLeft;
 }
 

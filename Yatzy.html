@@ -16,9 +16,11 @@
             <img src="diceSetsFolder/whiteDice/dice-1.png" id="dice4" value="1" onclick="selectDice(4)">
             <img src="diceSetsFolder/whiteDice/dice-1.png" id="dice5" value="1" onclick="selectDice(5)">
         </div>
-        <br>
-        <button onclick="rollButtonHandler()">Roll</button>
-
+        <div id="rollBar">
+            <p>Rolls left:</p> 
+            <p id="rollsLeftText">3</p>
+            <button onclick="rollButtonHandler()">Roll</button>
+        </div>
     </div>
     <div id="scoreBox">
         <table>
@@ -46,6 +48,9 @@
                 <tr class="total"><td>Samlet score:</td><td id="totalScore">0</td></tr>
             </tbody>
         </table>
+    </div>
+    <div id="skins">
+        
     </div>
 </body>
 </html>
