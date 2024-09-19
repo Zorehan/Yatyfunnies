@@ -59,7 +59,12 @@ function selectDice(index) {
 
 function checkValidFields() {
     if (rollsLeft === 0) {
-        let counts = countDice(diceResults);
+        document.querySelectorAll('input[type="number"]').forEach(field =>{ 
+            if(!field.classList.contains('held'))
+            field.disabled = false
+        })
+
+        /*let counts = countDice(diceResults);
 
         setFieldAvailability("aces", numberOfCategory(diceResults, 1) > 0);
         setFieldAvailability("twos", numberOfCategory(diceResults, 2) > 0);
@@ -75,7 +80,7 @@ function checkValidFields() {
         setFieldAvailability("smallStraight", smallStraight(diceResults) > 0);
         setFieldAvailability("largeStraight", largeStraight(diceResults) > 0);
         setFieldAvailability("yahtzee", yatzy(diceResults) > 0);
-        setFieldAvailability("chance", true);
+        setFieldAvailability("chance", true);*/
     }
 }
 
@@ -111,7 +116,7 @@ function updateTotals() {
             lowerTotal += parseInt(field.value);
         }
     });
-    
+
     if(upperTotal >= 63){
         upperTotal += 50
     }
@@ -233,6 +238,7 @@ document.querySelectorAll('input[type="number"]').forEach(field => {
             }
 
             this.value = score;
+            this.classList.add('held')
             this.disabled = true;
 
             updateTotals();
