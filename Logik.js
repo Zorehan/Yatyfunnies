@@ -58,7 +58,7 @@ function selectDice(index) {
 }
 
 function checkValidFields() {
-    if (rollsLeft === 0) {
+    if (rollsLeft < 3) {
         document.querySelectorAll('input[type="number"]').forEach(field =>{ 
             if(!field.classList.contains('held'))
             field.disabled = false

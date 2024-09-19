@@ -15,8 +15,7 @@ html {
   display: flex;
   flex-direction: column;
   margin: auto;
-  margin-bottom: 1%;
-  max-width: 70vw;
+  max-width: 60vw;
   min-width: 200px;
   padding: 1%;
   gap: 1%;
@@ -125,8 +124,8 @@ background: none;
   display: flex;
   flex-direction: column;
   margin: auto;
-  margin-bottom: 1%;
-  max-width: 70vw;
+  margin-bottom: 0.5%;
+  max-width: 60vw;
   min-width: 200px;
   padding: 1%;
 }
@@ -142,14 +141,21 @@ background: none;
 }
 
 #scoreBox th {
+  font-size: 3em;
+
+  /*
   font-size: min(56px);
   font-size: max(112px);
+  /* */
 }
 
 #scoreBox td {
+  font-size: 2em;
+
+  /*
   font-size: min(16px);
   font-size: max(56px);
-
+  /* */
 }
 
 #scoreBox input[type=number]{
@@ -162,6 +168,10 @@ background: none;
   text-decoration: underline;
 }
 
+.total{
+  text-align: center;
+  text-decoration: underline;
+}
 
 /* ------------------------------------------------------------- */
 /* Skins */
@@ -169,8 +179,7 @@ background: none;
   display: flex;
   flex-direction: column;
   margin: auto;
-  margin-bottom: 1%;
-  max-width: 70vw;
+  max-width: 60vw;
   min-width: 200px;
   padding: 1%;
 }
