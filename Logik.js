@@ -51,7 +51,8 @@ function updateDiceImages() {
 function selectDice(index) {
     if (rollsLeft != 3){
     index = index - 1; 
-    diceHeld[index] = !diceHeld[index];  
+    diceHeld[index] = !diceHeld[index];
+
     updateDiceImages();
     }
 }

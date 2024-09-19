@@ -7,9 +7,9 @@ html {
   max-height: none;
 }
 
-div {
+/*div {
   border: 2px solid rgb(220, 233, 146);
-}
+}*/
 
 #diceBox {
   display: flex;
@@ -21,6 +21,7 @@ div {
   padding: 1%;
   gap: 1%;
 }
+
 
 /* Dice box div */
 #diceImages {
@@ -168,4 +169,8 @@ background: none;
   max-width: 70vw;
   min-width: 200px;
   padding: 1%;
+}
+
+.held{
+  border: solid red 5px;
 }
