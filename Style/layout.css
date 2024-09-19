@@ -5,7 +5,6 @@ html {
   font-family: "Comic Sans MS", "Comic Sans", sans-serif;
   min-height: 100%;
   max-height: none;
-  font-size: 56px;
 }
 
 div {
@@ -18,11 +17,10 @@ div {
   margin: auto;
   margin-bottom: 1%;
   max-width: 70vw;
-  min-width: 900px;
+  min-width: 200px;
   padding: 1%;
+  gap: 1%;
 }
-
-
 
 /* Dice box div */
 #diceImages {
@@ -42,52 +40,31 @@ div {
   min-width: 0%;
 }
 
-/* CHECKBOXES */
-#rerole {
+#rollBar {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
   /* scale */
   max-width: 100%;
   min-width: 0%;
-  max-height: 100%;
-  min-height: 0%;
-  
+  padding: 1%;
   gap: 1%;
 }
 
-input[type=checkbox] {
- object-fit: cover;  /*Ensures the image covers the container without distortion */
-  flex: 1;
-  /* scale */
- -ms-transform: scale(10); /*  IE */
- -moz-transform: scale(10);/*   FF */
-  -webkit-transform: scale(10);/*  Safari and Chrome */
- -o-transform: scale(10);/*   Opera */
-  transform: scale(10);
-  padding: 10px;
-  
-  gap: 1%;
-}
 
-.checkboxtext
-{
-  /* Checkbox text */
-  font-size: 110%;
-  display: inline;
-}
 
 /* CRAZY BUTTON */
 /* Button base layout */
-#diceBox button {
-  align-self: end;
-  
+#rollBar button {
+  object-fit: cover;
   font-family: "Comic Sans MS", "Comic Sans", sans-serif; /* Button text font */
   background-color: rgb(255, 175, 100); /* Button Shadow color */
   border: solid transparent;
   border-radius: 16px;
   border-width: 0 0 4px;
   box-sizing: border-box;
-  font-size:calc(1vh + 1vw);
+  font-size: 24px;
   font-weight: 700;
   letter-spacing: .8px;
   line-height: 20px;
@@ -105,10 +82,9 @@ input[type=checkbox] {
   -webkit-user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-
 }
 
-#diceBox button:after {
+#rollBar button:after {
 background-clip: padding-box;
 background-color:  rgb(255, 200, 165);
 border: solid transparent;
@@ -123,21 +99,21 @@ top: 0;
 z-index: -1;
 }
 
-#diceBox button,
-#diceBox button:focus {
+#rollBar button,
+#rollBar button:focus {
 user-select: auto;
 }
 
-#diceBox button:hover:not(:disabled) {
+#rollBar button:hover:not(:disabled) {
 filter: brightness(1.1);
 -webkit-filter: brightness(1.1);
 }
 
-#diceBox button:disabled {
+#rollBar button:disabled {
 cursor: auto;
 }
 
-#diceBox button:active {
+#rollBar button:active {
 border-width: 4px 0 0;
 background: none;
 }
@@ -150,31 +126,46 @@ background: none;
   margin: auto;
   margin-bottom: 1%;
   max-width: 70vw;
-  min-width: 900px;
+  min-width: 200px;
   padding: 1%;
 }
 
 #scoreBox table {
+  object-fit: cover;
   margin-left: auto;
   margin-right: auto;
   align-self: center;
-  max-width: 100%;
-  min-width: 0%;
+  max-width: 70vw;
+  min-width: 200px;
+  white-space: nowrap;
 }
 
 #scoreBox th {
-  font-size: 2rem;
+  font-size: min(56px);
+  font-size: max(112px);
 }
 
 #scoreBox td {
-  font-size: 1rem;
-  
+  font-size: min(16px);
+  font-size: max(56px);
+
 }
 
 /* sets all */
-.totalCounters{
+.totalRow{
   text-align: center;
   text-decoration: underline;
 }
 
 
+/* ------------------------------------------------------------- */
+/* Skins */
+#skins {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-bottom: 1%;
+  max-width: 70vw;
+  min-width: 200px;
+  padding: 1%;
+}

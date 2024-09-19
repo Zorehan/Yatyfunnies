@@ -1,129 +1,131 @@
-let diceRoll = new Array(5)
 
-let checked = [false,false,false,false,false]
+let diceResults = [1, 1, 1, 1, 1];
+let diceHeld = [false, false, false, false, false];
+let rollsLeft = 3;
+let diceSkin = "whiteDice";
 
-//Ruller terningen  
 function rollDie() {
     return Math.floor(Math.random() * 6) + 1;
 }
 
-//Ruller 5 terninger 
-function rollDice(numOfDice = 5) {
-    let diceResults = [];
-    for (let i = 0; i < numOfDice; i++) {
-        //TODO ----------- (colour mood is comming for you)
-        //Stop terningerne fra at rulle igen
-        diceResults.push(rollDie());
-    }
-    return diceResults;
-}
+function rollDice() {
+    if (rollsLeft > 0) {
+        for (let i = 0; i < diceResults.length; i++) {
+            if (!diceHeld[i]) {
+                diceResults[i] = rollDie();
+            }
+        }
+        updateDiceImages();
+        rollsLeft--;
 
-//Lægger tallene sammen
-function sumDiceResults(diceResults) {
-    return diceResults.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-}
-
-//Udregner totalsummen af alle slag 
-let totalSum = sumDiceResults(diceRoll); 
-
-
-//eventhandler der skal rulle terningerne 
-function diceRoller(){
-    checkCheck()
-    diceUpdate()
-    diceImgUpdate()
-    console.log(checked)
-    console.log(diceRoll)
-
-
-
-}
-
-function checkCheck(){
-    let check
-    for(let i = 0; i < checked.length;i++){
-        check = document.getElementById("reroleDice" + (i + 1))
-        checked[i] = check.checked
-        
+        let rollsLeftText = document.getElementById("rollsLeftText");
+        rollsLeftText.textContent = rollsLeft;
     }
 }
 
-function diceUpdate(){
-    let dice = rollDice()
-    for(let i = 0; i < diceRoll.length; i++){
-        if(checked[i] !== true){
-            diceRoll[i] = dice[i]
+function onClickBlackDiceBtn()
+{
+    diceSkin = "blackDice";
+    updateDiceImages();
+}
+
+function onClickNumberedDiceBtn()
+{
+    diceSkin = "numberedDice3d";
+    updateDiceImages();
+}
+
+function updateDiceImages() {
+    for (let i = 0; i < diceResults.length; i++) {
+        let diceImage = document.getElementById(`dice${i + 1}`);
+        diceImage.src = `diceSetsFolder/${diceSkin}/dice-${diceResults[i]}.png`;
+
+        if (diceHeld[i]) {
+            diceImage.classList.add('held');
+        } else {
+            diceImage.classList.remove('held');
         }
     }
-
 }
 
-function diceImgUpdate(){
-    //imgThrow()
-    //imgRolling()
-    for(let i = 0; i < 5; i++){
-        if(checked[i] !== true){
-        document.getElementById('dice' + (i + 1)).src = "diceThrow/dice-cup.png"
+function selectDice(index) {
+    if (rollsLeft != 3){
+    index = index - 1; 
+    diceHeld[index] = !diceHeld[index];  
+    updateDiceImages();
+    }
+}
+
+function checkValidFields() {
+    if (rollsLeft === 0) {
+        let counts = countDice(diceResults);
+
+        setFieldAvailability("aces", numberOfCategory(diceResults, 1) > 0);
+        setFieldAvailability("twos", numberOfCategory(diceResults, 2) > 0);
+        setFieldAvailability("threes", numberOfCategory(diceResults, 3) > 0);
+        setFieldAvailability("fours", numberOfCategory(diceResults, 4) > 0);
+        setFieldAvailability("fives", numberOfCategory(diceResults, 5) > 0);
+        setFieldAvailability("sixes", numberOfCategory(diceResults, 6) > 0);
+        setFieldAvailability("onePair", onePair(diceResults) > 0);
+        setFieldAvailability("twoPairs", twoPairs(diceResults) > 0);
+        setFieldAvailability("threeOfAKind", threeOfAKind(diceResults) > 0);
+        setFieldAvailability("fourOfAKind", fourOfAKind(diceResults) > 0);
+        setFieldAvailability("fullHouse", fullHouse(diceResults) > 0);
+        setFieldAvailability("smallStraight", smallStraight(diceResults) > 0);
+        setFieldAvailability("largeStraight", largeStraight(diceResults) > 0);
+        setFieldAvailability("yahtzee", yatzy(diceResults) > 0);
+        setFieldAvailability("chance", true);
+    }
+}
+
+function setFieldAvailability(id, available) {
+    let field = document.getElementById(id);
+    field.disabled = !available; 
+}
+
+function countDice(dice) {
+    let counts = {};
+    for (let die of dice) {
+        counts[die] = (counts[die] || 0) + 1;
+    }
+    return counts;
+}
+
+function updateTotals() {
+    let upperTotal = 0;
+    let lowerTotal = 0;
+
+    const upperFields = ['aces', 'twos', 'threes', 'fours', 'fives', 'sixes'];
+    upperFields.forEach(id => {
+        let field = document.getElementById(id);
+        if (field.value !== '') {
+            upperTotal += parseInt(field.value);
         }
-    }
-    wait(500)
-    for(let i = 0; i < 5; i++){
-        if(checked[i] !== true){
-        document.getElementById('dice' + (i + 1)).src = "diceThrow/cubes.png"
+    });
+
+    const lowerFields = ['onePair', 'twoPairs', 'threeOfAKind', 'fourOfAKind', 'fullHouse', 'smallStraight', 'largeStraight', 'yahtzee', 'chance'];
+    lowerFields.forEach(id => {
+        let field = document.getElementById(id);
+        if (field.value !== '') {
+            lowerTotal += parseInt(field.value);
         }
-    }
-    wait(500)
+    });
 
-
-    for(let i = 0; i < 5; i++){
-        if(checked[i]!== true){
-        document.getElementById('dice' + (i + 1)).src = "diceSetsFolder/whiteDice/dice-"+ diceRoll[i] +".png"
-        }
-    }
-
-}
-
-function imgThrow(){
-    for(let i = 0; i < 5; i++){
-        if(checked[i] !== true){
-        document.getElementById('dice' + (i + 1)).src = "diceThrow/dice-cup.png"
-        }
-    }
-    wait(500)
-   
-
-}
-
-function imgRolling(){
-    for(let i = 0; i < 5; i++){
-        if(checked[i] !== true){
-        document.getElementById('dice' + (i + 1)).src = "diceThrow/cubes.png"
-        }
-    }
-    wait(500)
-}
-
-let wait = (ms) => {
-    const start = Date.now();
-    let now = start;
-    while (now - start < ms) {
-      now = Date.now();
-    }
+    document.getElementById('upperTotal').innerText = upperTotal;
+    document.getElementById('lowerTotal').innerText = lowerTotal;
+    document.getElementById('totalScore').innerText = upperTotal + lowerTotal;
 }
 
 
-//---------------------------------------------------------------------------------
-//Select hvilken boks slaget skal gemmes i:
-function selectDice(){
-    
+function rollButtonHandler() {
+    rollDice();
+    checkValidFields();
 }
 
-//X-antal af en ternnig 
 function numberOfCategory(dice, number) {
     return dice.filter(die => die === number).reduce((sum, die) => sum + die, 0);
 }
 
-//Et par
 function onePair(dice) {
     const counts = countDice(dice);
     for (let i = 6; i > 0; i--) {
@@ -134,7 +136,6 @@ function onePair(dice) {
     return 0;
 }
 
-//To par
 function twoPairs(dice) {
     const counts = countDice(dice);
     let pairs = [];
@@ -149,7 +150,6 @@ function twoPairs(dice) {
     return 0;
 }
 
-//tre par
 function threeOfAKind(dice) {
     const counts = countDice(dice);
     for (let i = 6; i > 0; i--) {
@@ -160,7 +160,6 @@ function threeOfAKind(dice) {
     return 0;
 }
 
-//fire par
 function fourOfAKind(dice) {
     const counts = countDice(dice);
     for (let i = 6; i > 0; i--) {
@@ -171,7 +170,6 @@ function fourOfAKind(dice) {
     return 0;
 }
 
-//fuldt hus
 function fullHouse(dice) {
     const counts = countDice(dice);
     let three = 0, two = 0;
@@ -185,24 +183,67 @@ function fullHouse(dice) {
     return (three && two) ? three * 3 + two * 2 : 0;
 }
 
-//lille straight
 function smallStraight(dice) {
     const sorted = [...new Set(dice)].sort();
     return JSON.stringify(sorted) === JSON.stringify([1, 2, 3, 4, 5]) ? 15 : 0;
 }
 
-//stor straight
 function largeStraight(dice) {
     const sorted = [...new Set(dice)].sort();
     return JSON.stringify(sorted) === JSON.stringify([2, 3, 4, 5, 6]) ? 20 : 0;
 }
 
-//chance
 function chance(dice) {
-    return sumDiceResults(dice);
+    return dice.reduce((sum, die) => sum + die, 0);
 }
 
-//yatzy 
 function yatzy(dice) {
     return dice.every(die => die === dice[0]) ? 50 : 0;
 }
+
+document.querySelectorAll('input[type="number"]').forEach(field => {
+    field.addEventListener('click', function() {
+        if (rollsLeft === 0 && !this.disabled) {
+            let score = 0;
+            const id = this.id;
+
+        
+            switch (id) {
+                case 'aces': score = numberOfCategory(diceResults, 1); break;
+                case 'twos': score = numberOfCategory(diceResults, 2); break;
+                case 'threes': score = numberOfCategory(diceResults, 3); break;
+                case 'fours': score = numberOfCategory(diceResults, 4); break;
+                case 'fives': score = numberOfCategory(diceResults, 5); break;
+                case 'sixes': score = numberOfCategory(diceResults, 6); break;
+                case 'onePair': score = onePair(diceResults); break;
+                case 'twoPairs': score = twoPairs(diceResults); break;
+                case 'threeOfAKind': score = threeOfAKind(diceResults); break;
+                case 'fourOfAKind': score = fourOfAKind(diceResults); break;
+                case 'fullHouse': score = fullHouse(diceResults); break;
+                case 'smallStraight': score = smallStraight(diceResults); break;
+                case 'largeStraight': score = largeStraight(diceResults); break;
+                case 'yahtzee': score = yatzy(diceResults); break;
+                case 'chance': score = chance(diceResults); break;
+            }
+
+            this.value = score;
+            this.disabled = true;
+
+            updateTotals();
+            resetGame();
+        }
+    });
+});
+
+function resetGame() {
+    rollsLeft = 3;
+    diceResults = [1, 1, 1, 1, 1];
+    diceHeld = [false, false, false, false, false];
+    updateDiceImages();
+    document.querySelectorAll('input[type="number"]').forEach(field => field.disabled = true);
+    
+    /* updates "Rolls left: x" text field */
+    let rollsLeftText = document.getElementById("rollsLeftText");
+    rollsLeftText.textContent = rollsLeft;
+}
+

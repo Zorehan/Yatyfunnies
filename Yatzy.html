@@ -6,102 +6,52 @@
     <title>Yahtzee Scoreboard</title>
     <link rel="stylesheet" href="Style/layout.css">
     <script src="Logik.js" defer></script>
-    
 </head>
 <body>
     <div id="diceBox">
         <div id="diceImages">
-            <img src="diceSetsFolder/whiteDice/dice-1.png" id="dice1" onclick="selectDice()">
-            <img src="diceSetsFolder/whiteDice/dice-1.png" id="dice2" onclick="selectDice()">
-            <img src="diceSetsFolder/whiteDice/dice-1.png" id="dice3" onclick="selectDice()">
-            <img src="diceSetsFolder/whiteDice/dice-1.png" id="dice4" onclick="selectDice()">
-            <img src="diceSetsFolder/whiteDice/dice-1.png" id="dice5" onclick="selectDice()">
+            <img src="diceSetsFolder/whiteDice/dice-1.png" id="dice1" value="1" onclick="selectDice(1)">
+            <img src="diceSetsFolder/whiteDice/dice-1.png" id="dice2" value="1" onclick="selectDice(2)">
+            <img src="diceSetsFolder/whiteDice/dice-1.png" id="dice3" value="1" onclick="selectDice(3)">
+            <img src="diceSetsFolder/whiteDice/dice-1.png" id="dice4" value="1" onclick="selectDice(4)">
+            <img src="diceSetsFolder/whiteDice/dice-1.png" id="dice5" value="1" onclick="selectDice(5)">
         </div>
-        <br>
-        <div id="rerole">
-            <input type="checkbox" name="checkbox1" id="reroleDice1">
-            <input type="checkbox" name="checkbox2" id="reroleDice2">
-            <input type="checkbox" name="checkbox3" id="reroleDice3">
-            <input type="checkbox" name="checkbox4" id="reroleDice4">
-            <input type="checkbox" name="checkbox5" id="reroleDice5">
+        <div id="rollBar">
+            <p>Rolls left:</p> 
+            <p id="rollsLeftText">3</p>
+            <button onclick="rollButtonHandler()">Roll</button>
         </div>
-        <br>
-        <button onclick="diceRoller()">Roll</button>
     </div>
     <div id="scoreBox">
         <table>
             <thead>
-                <tr>
-                    <th>Score</th>
-                </tr>
+                <tr><th>Score</th></tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1-ere:</td>
-                    <td><input type="number" id="aces" oninput="updateTotal()" onclick="insertValues()" disabled="true"></td>
-                </tr>
-                <tr>
-                    <td>2-ere:</td>
-                    <td><input type="number" id="twos" oninput="updateTotal()" onclick="insertValues()" disabled="true"></td>
-                </tr>
-                <tr>
-                    <td>3-ere:</td>
-                    <td><input type="number" id="threes" oninput="updateTotal()" onclick="insertValues()" disabled="true"></td>
-                </tr>
-                <tr>
-                    <td>4-ere:</td>
-                    <td><input type="number" id="fours" oninput="updateTotal()" onclick="insertValues()" disabled="true"></td>
-                </tr>
-                <tr>
-                    <td>5-ere:</td>
-                    <td><input type="number" id="fives" oninput="updateTotal()" onclick="insertValues()" disabled="true"></td>
-                </tr>
-                <tr>
-                    <td>6-ere:</td>
-                    <td><input type="number" id="sixes" oninput="updateTotal()" onclick="insertValues()" disabled="true"></td>
-                </tr>
-                <tr class="totalRow">
-                    <td class="totalCounters" >Samlet point øverst:</td>
-                    <td class="tota lCounters" id="upperTotal">0</td>
-                </tr>
-                <tr>
-                    <td>Tre ens:</td>
-                    <td><input type="number" id="threeOfAKind" oninput="updateTotal()" onclick="insertValues()" disabled="true"></td>
-                </tr>
-                <tr>
-                    <td>Fire ens:</td>
-                    <td><input type="number" id="fourOfAKind" oninput="updateTotal()" onclick="insertValues()" disabled="true"></td>
-                </tr>
-                <tr>
-                    <td>Fuld hus:</td>
-                    <td><input type="number" id="fullHouse" oninput="updateTotal()" onclick="insertValues()" disabled="true"></td>
-                </tr>
-                <tr>
-                    <td>Lille straight:</td>
-                    <td><input type="number" id="smallStraight" oninput="updateTotal()" onclick="insertValues()" disabled="true"></td>
-                </tr>
-                <tr>
-                    <td>Stor straight:</td>
-                    <td><input type="number" id="largeStraight" oninput="updateTotal()" onclick="insertValues()" disabled="true"></td>
-                </tr>
-                <tr>
-                    <td>Yahtzee:</td>
-                    <td><input type="number" id="yahtzee" oninput="updateTotal()" onclick="insertValues()" disabled="true"></td>
-                </tr>
-                <tr>
-                    <td>Chance:</td>
-                    <td><input type="number" id="chance" oninput="updateTotal()" onclick="insertValues()" disabled="true"></td>
-                </tr>
-                <tr class="totalRow">
-                    <td class="totalCounters">Samlet point nederest:</td>
-                    <td class="totalCounters" id="lowerTotal">0</td>
-                </tr>
-                <tr class="total">
-                    <td class="totalCounters">Samlet score:</td>
-                    <td class="totalCounters" id="totalScore">0</td>
-                </tr>
+                <tr><td>1-ere:</td><td><input type="number" id="aces" disabled></td></tr>
+                <tr><td>2-ere:</td><td><input type="number" id="twos" disabled></td></tr>
+                <tr><td>3-ere:</td><td><input type="number" id="threes" disabled></td></tr>
+                <tr><td>4-ere:</td><td><input type="number" id="fours" disabled></td></tr>
+                <tr><td>5-ere:</td><td><input type="number" id="fives" disabled></td></tr>
+                <tr><td>6-ere:</td><td><input type="number" id="sixes" disabled></td></tr>
+                <tr class="totalRow"><td>Samlet point øverst:</td><td id="upperTotal">0</td></tr>
+                <tr><td>Et Par</td><td><input type="number" id="onePair" disabled></td></tr>
+                <tr><td>To Par</td><td><input type="number" id="twoPairs" disabled></td></tr>
+                <tr><td>Tre ens:</td><td><input type="number" id="threeOfAKind" disabled></td></tr>
+                <tr><td>Fire ens:</td><td><input type="number" id="fourOfAKind" disabled></td></tr>
+                <tr><td>Fuld hus:</td><td><input type="number" id="fullHouse" disabled></td></tr>
+                <tr><td>Lille straight:</td><td><input type="number" id="smallStraight" disabled></td></tr>
+                <tr><td>Stor straight:</td><td><input type="number" id="largeStraight" disabled></td></tr>
+                <tr><td>Yahtzee:</td><td><input type="number" id="yahtzee" disabled></td></tr>
+                <tr><td>Chance:</td><td><input type="number" id="chance" disabled></td></tr>
+                <tr class="totalRow"><td>Samlet point nederest:</td><td id="lowerTotal">0</td></tr>
+                <tr class="total"><td>Samlet score:</td><td id="totalScore">0</td></tr>
             </tbody>
         </table>
+    </div>
+    <div id="skins">
+        <button id="Skin" onclick="onClickBlackDiceBtn()">BlackDice</button> 
+        <button id="Skin" onclick="onClickNumberedDiceBtn()">numberedDice3d</button>
     </div>
 </body>
 </html>
