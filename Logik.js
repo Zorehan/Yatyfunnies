@@ -131,6 +131,7 @@ function updateTotals() {
 function rollButtonHandler() {
     rollDice();
     checkValidFields();
+    updateScoreFields();
 }
 
 function numberOfCategory(dice, number) {
@@ -212,11 +213,11 @@ function yatzy(dice) {
     return dice.every(die => die === dice[0]) ? 50 : 0;
 }
 
-document.querySelectorAll('input[type="number"]').forEach(field => {
-    field.addEventListener('click', function() {
-        if (rollsLeft < 3 && !this.disabled) {
+function updateScoreFields(){
+    document.querySelectorAll('input[type="number"]').forEach(field => {
+        if(!field.classList.contains('held')){
             let score = 0;
-            const id = this.id;
+            const id = field.id;
 
         
             switch (id) {
@@ -237,10 +238,27 @@ document.querySelectorAll('input[type="number"]').forEach(field => {
                 case 'chance': score = chance(diceResults); break;
             }
 
-            this.value = score;
+            field.value = score;
+        }
+    })
+}
+
+function resetScoreFields(){
+    document.querySelectorAll('input[type="number"]').forEach(field => {
+        if(!field.classList.contains('held')){
+            field.value = ""
+        }
+
+    })
+}
+
+document.querySelectorAll('input[type="number"]').forEach(field => {
+    field.addEventListener('click', function() {
+        if (rollsLeft < 3 && !this.disabled) {
             this.classList.add('held')
             this.disabled = true;
 
+            resetScoreFields()
             updateTotals();
             resetGame();
         }
