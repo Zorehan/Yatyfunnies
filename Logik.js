@@ -51,14 +51,20 @@ function updateDiceImages() {
 function selectDice(index) {
     if (rollsLeft != 3){
     index = index - 1; 
-    diceHeld[index] = !diceHeld[index];  
+    diceHeld[index] = !diceHeld[index];
+
     updateDiceImages();
     }
 }
 
 function checkValidFields() {
-    if (rollsLeft < 3) {
-        let counts = countDice(diceResults);
+    if (rollsLeft === 0) {
+        document.querySelectorAll('input[type="number"]').forEach(field =>{ 
+            if(!field.classList.contains('held'))
+            field.disabled = false
+        })
+
+        /*let counts = countDice(diceResults);
 
         setFieldAvailability("aces", numberOfCategory(diceResults, 1) > 0);
         setFieldAvailability("twos", numberOfCategory(diceResults, 2) > 0);
@@ -74,7 +80,7 @@ function checkValidFields() {
         setFieldAvailability("smallStraight", smallStraight(diceResults) > 0);
         setFieldAvailability("largeStraight", largeStraight(diceResults) > 0);
         setFieldAvailability("yahtzee", yatzy(diceResults) > 0);
-        setFieldAvailability("chance", true);
+        setFieldAvailability("chance", true);*/
     }
 }
 
@@ -111,9 +117,14 @@ function updateTotals() {
         }
     });
 
+    if(upperTotal >= 63){
+        upperTotal += 50
+    }
     document.getElementById('upperTotal').innerText = upperTotal;
     document.getElementById('lowerTotal').innerText = lowerTotal;
+    
     document.getElementById('totalScore').innerText = upperTotal + lowerTotal;
+
 }
 
 
@@ -227,6 +238,7 @@ document.querySelectorAll('input[type="number"]').forEach(field => {
             }
 
             this.value = score;
+            this.classList.add('held')
             this.disabled = true;
 
             updateTotals();
