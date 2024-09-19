@@ -111,10 +111,15 @@ function updateTotals() {
             lowerTotal += parseInt(field.value);
         }
     });
-
+    
+    if(upperTotal >= 63){
+        upperTotal += 50
+    }
     document.getElementById('upperTotal').innerText = upperTotal;
     document.getElementById('lowerTotal').innerText = lowerTotal;
+    
     document.getElementById('totalScore').innerText = upperTotal + lowerTotal;
+
 }
 
 
