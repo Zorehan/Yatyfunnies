@@ -151,6 +151,10 @@ background: none;
 
 }
 
+#scoreBox input[type=number]{
+  text-align: center;
+}
+
 /* sets all */
 .totalRow{
   text-align: center;

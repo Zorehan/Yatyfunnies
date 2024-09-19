@@ -57,7 +57,7 @@ function selectDice(index) {
 }
 
 function checkValidFields() {
-    if (rollsLeft === 0) {
+    if (rollsLeft < 3) {
         let counts = countDice(diceResults);
 
         setFieldAvailability("aces", numberOfCategory(diceResults, 1) > 0);
@@ -203,7 +203,7 @@ function yatzy(dice) {
 
 document.querySelectorAll('input[type="number"]').forEach(field => {
     field.addEventListener('click', function() {
-        if (rollsLeft === 0 && !this.disabled) {
+        if (rollsLeft < 3 && !this.disabled) {
             let score = 0;
             const id = this.id;
 
