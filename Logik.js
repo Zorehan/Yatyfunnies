@@ -64,7 +64,7 @@ function checkValidFields() {
             field.disabled = false
         })
 
-        /*let counts = countDice(diceResults);
+        let counts = countDice(diceResults);
 
         setFieldAvailability("aces", numberOfCategory(diceResults, 1) > 0);
         setFieldAvailability("twos", numberOfCategory(diceResults, 2) > 0);
@@ -80,7 +80,7 @@ function checkValidFields() {
         setFieldAvailability("smallStraight", smallStraight(diceResults) > 0);
         setFieldAvailability("largeStraight", largeStraight(diceResults) > 0);
         setFieldAvailability("yahtzee", yatzy(diceResults) > 0);
-        setFieldAvailability("chance", true);*/
+        setFieldAvailability("chance", true);
     }
 }
 
